@@ -1,0 +1,7 @@
+Just overflow the buffer until you hit the target variable, and set the value 
+you need.
+Keep in mind 2 things:
+- x86 is little endian, so you need to set the byte sequence in reverse order
+- if you pipe the payload and nothing more, the shell will exit as soon as it
+gets EOF, a good trick is: cat payload - | binary
+that way the binary will get the payload and then the standard input

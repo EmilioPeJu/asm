@@ -1,0 +1,16 @@
+We fill the buffer(argument) with the shellcode + padding to get to return address +
+address of start of buffer
+
+Keep in mind that because the size of the argument changes the buffer address,
+we need to find that address with the argument being as big as the final
+payload. Another option is using NOP SLED and repeated RET but we are not doing.
+
+What is each file:
+profile.rr2: running in a deterministic way (taking env and arg1 from file)
+analyse.sh: determines BUFFER and BUFFERTORET given the current profile
+gen.sh: generate a shellcode for executing /bin/sh
+execsh.asm: asm for executing syscall execve('/bin/sh', NULL, NULL)
+solve.sh: analyse with any arg, then with the target length arg, generates the
+payload(and pipe it to arg1) based on that analysis and finally runs the rarun2
+with the profile.
+

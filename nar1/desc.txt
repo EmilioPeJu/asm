@@ -1,0 +1,7 @@
+We need a shellcode in the environment variable EGG
+We create the shellcode from scratch, creating the asm and extracting the text
+section.
+The following consideration is not necesary here:
+- a line in a environment variable is read as a c string,
+in this challenge it is not copied, therefore, it doesn't matter, but
+it is a good practice to avoid null bytes in shellcodes
