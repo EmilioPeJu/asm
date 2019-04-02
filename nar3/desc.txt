@@ -1,0 +1,3 @@
+Set input file as 33 times a, create a link from the password file
+to that name, and because the last 'a' lives in ofile, the output
+will be in file 'a'
