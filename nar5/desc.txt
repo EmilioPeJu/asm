@@ -1,0 +1,9 @@
+Format string vulnerability
+In the stack, at the moment of snprintf call, we have:
+[address to buffer] [lenth of buffer] [address to argv[1]][buffer]
+
+snprintf will take the 3 first parameters, and if it requires more
+it will continue taking parameters from the buffer,
+therefore we can use the first part of the buffer to write the
+address of i and then %...x to modify the count and %1$hn will
+write the count as a short in the first argument (starting in buffer)
